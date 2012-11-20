@@ -1,0 +1,567 @@
+/*---------------------------------------------------
+    LESS Elements 0.6
+  ---------------------------------------------------
+    A set of useful LESS mixins by Dmitry Fadeyev
+    Special thanks for mixin suggestions to:
+      Kris Van Herzeele,
+      Benoit Adam,
+      Portenart Emile-Victor,
+      Ryan Faerman
+
+    More info at: http://lesselements.com
+-----------------------------------------------------*/
+/*	Less Framework 4
+	http://lessframework.com
+	by Joni Korpi
+	License: http://opensource.org/licenses/mit-license.php	*/
+/*	Resets
+	------	*/
+/* apply a natural box layout model to all elements */
+/* from http://paulirish.com/2012/box-sizing-border-box-ftw/ */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* maxvoltar.com/archive/-webkit-font-smoothing */
+html {
+  -webkit-font-smoothing: antialiased;
+}
+pre {
+  padding: 15px;
+  white-space: pre;
+  /* CSS2 */
+
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+
+  white-space: pre-line;
+  /* CSS 3 (and 2.1 as well, actually) */
+
+  word-wrap: break-word;
+  /* IE */
+
+}
+/* hand cursor on clickable input elements */
+label,
+input[type=button],
+input[type=submit],
+button {
+  cursor: pointer;
+}
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+figcaption,
+hgroup,
+menu,
+footer,
+header,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+a img {
+  border: 0;
+}
+/*	Color variables
+	------------------	*/
+/* Highlight color, when user selects text */
+/* Link color, hover/visited will be generated from this */
+/* Selection colours (easy to forget) */
+::selection {
+  background: #fff9a2;
+}
+::-moz-selection {
+  background: #fff9a2;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+body {
+  -webkit-tap-highlight-color: #fff9a2;
+}
+em {
+  background: rgba(255, 249, 162, 0.65);
+}
+/*	Typography presets
+	------------------	*/
+.gigantic {
+  font-size: 4em;
+  line-height: 1.3em;
+  letter-spacing: -2px;
+}
+.huge,
+h1 {
+  color: #000000;
+  font-size: 3.75em;
+  line-height: 1.1em;
+  letter-spacing: -1px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.large,
+h2 {
+  color: #080808;
+  font-size: 2.75em;
+  line-height: 2em;
+  font-weight: 800;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+}
+.bigger,
+h3 {
+  color: #0e0e0e;
+  font-size: 1.75em;
+  line-height: 1.5em;
+  font-weight: 800;
+  margin: 8px 0;
+}
+.big,
+h4 {
+  color: #151515;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 700;
+  margin: 8px 0;
+}
+body {
+  font: normal 100% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.45em;
+}
+strong {
+  font-weight: 800;
+}
+.small,
+small {
+  opacity: 0.8;
+  font-size: 0.7em;
+  line-height: 1.2em;
+}
+@media only screen and (max-width: 767px) {
+  .huge,
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin-bottom: 12px;
+  }
+  .large,
+  h2 {
+    color: #080808;
+    font-size: 2em;
+    line-height: 1.3em;
+    font-weight: 800;
+    line-height: 1.4em;
+    margin-bottom: 6px;
+  }
+  .bigger,
+  h3 {
+    color: #0e0e0e;
+    font-size: 1.75em;
+    line-height: 1.2em;
+    font-weight: 800;
+    margin: 6px 0;
+  }
+  .big,
+  h4 {
+    color: #151515;
+    font-size: 1.4em;
+    line-height: 1.5em;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+}
+p {
+  margin: 0.6em 0;
+}
+/*	Column class / mixins 
+	---------------------	*/
+.1-column {
+  width: 68px;
+}
+.2-column {
+  width: 160px;
+}
+.3-column {
+  width: 252px;
+}
+.4-column {
+  width: 344px;
+}
+.5-column {
+  width: 436px;
+}
+.6-column {
+  width: 528px;
+}
+.7-column {
+  width: 620px;
+}
+.8-column {
+  width: 712px;
+}
+.9-column {
+  width: 804px;
+}
+.10-column {
+  width: 896px;
+}
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+body {
+  font-size: 1em;
+  width: 75%;
+  padding: 32px 48px 84px;
+  background: #f7f7f7;
+  color: #272727;
+  -webkit-text-size-adjust: 100%;
+  /* Stops Mobile Safari from auto-adjusting font-sizes */
+
+  margin-left: auto;
+  margin-right: auto;
+}
+a:link {
+  color: #10206d;
+  -webkit-transition: all 0.24s ease-in-out;
+  -moz-transition: all 0.24s ease-in-out;
+  transition: all 0.24s ease-in-out;
+}
+a:hover {
+  color: #060c2a;
+}
+a:visited {
+  color: #04081d;
+}
+.section {
+  margin: 12px 0;
+}
+.example,
+.description {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.example {
+  width: 48%;
+  max-width: 400px;
+  text-align: center;
+}
+.description {
+  background-color: rgba(240, 240, 240, 0.4);
+  padding: 4px 0.8em;
+  width: 48%;
+}
+pre.code {
+  background-color: #F8F8F8;
+  font-size: .75em;
+  line-height: 1.45em;
+  width: 100%;
+  padding: 8px 6px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 14px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 14px rgba(0, 0, 0, 0.1);
+}
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+@media only screen and (max-width: 767px) {
+  body {
+    min-width: 252px;
+    width: 100%;
+    padding: 8px 8px 16px;
+    font-size: 1em;
+    line-height: 1.5em;
+  }
+}
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  body {
+    width: 436px;
+    padding: 8px 8px 16px;
+  }
+}
+/* 
+        Styling those forms / inputs
+        
+------------------------------------------------------------ */
+label {
+  color: black;
+}
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+}
+th {
+  text-align: right;
+}
+button {
+  opacity: 0.82;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  padding: 0.5em;
+  margin: 4px 8px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.2em;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 1px 1px 1px #fff;
+  -webkit-border-radius: 0.5em;
+  outline: none;
+  text-shadow: 0 2px 1px #FFF;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d6d6d6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: linear-gradient(top, #ffffff, #d6d6d6);
+  filter: progid:dximagetransform.microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#d6d6d6');
+  -webkit-transition: all 0.001s ease-out;
+  -moz-transition: all 0.001s ease-out;
+  transition: all 0.001s ease-out;
+}
+button:hover {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 2px #FFF;
+}
+button:active {
+  opacity: 0.9;
+  border: 1px solid black;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(#929292), to(#ffffff));
+  background-image: -webkit-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -moz-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -o-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -ms-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: radial-gradient(50% 50%, #ffffff, #929292);
+}
+.small-button {
+  padding: 2px 4px;
+  font-size: 10px;
+  text-shadow: 0 1px 1px #FFF;
+}
+input,
+textarea,
+select {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 4px 8px;
+  font-size: 15px;
+  line-height: 1.2em;
+  width: 13em;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 1px 1px 1px #fff;
+  -webkit-border-radius: 0.5em;
+  outline: none;
+  background-color: #ebebeb;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #ebebeb, #ffffff);
+  background-image: -moz-linear-gradient(top, #ebebeb, #ffffff);
+  background-image: -o-linear-gradient(top, #ebebeb, #ffffff);
+  background-image: -ms-linear-gradient(top, #ebebeb, #ffffff);
+  background-image: linear-gradient(top, #ebebeb, #ffffff);
+  filter: progid:dximagetransform.microsoft.gradient(GradientType=0, StartColorStr='#ebebeb', EndColorStr='#ffffff');
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+}
+input:hover,
+textarea:hover,
+select:hover {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+}
+input:active,
+textarea:active,
+select:active,
+input:focus,
+textarea:focus,
+select:focus {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d6d6d6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: linear-gradient(top, #ffffff, #d6d6d6);
+  filter: progid:dximagetransform.microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#d6d6d6');
+  text-shadow: 0 2px 1px #FFF;
+}
+@media only screen and (max-width: 767px) {
+  input,
+  textarea,
+  select {
+    width: 8em;
+  }
+}
+input[type=text] {
+  color: #5A5A5A;
+}
+input[type=text]:active,
+input[type=text]:focus {
+  color: black;
+  background-image: none !important;
+  background-color: white;
+}
+input[type=checkbox],
+input[type=radio] {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1em;
+  margin: 0 0.25em 0 0;
+  padding: 0;
+  width: 1.25em;
+  height: 1.25em;
+  -webkit-border-radius: 0.25em;
+  vertical-align: text-top;
+}
+input[type=radio] {
+  -webkit-border-radius: 2em;
+  /* Make radios round */
+
+}
+input[type=submit] {
+  opacity: 0.95;
+  border: 3px solid rgba(0, 0, 0, 0.55);
+  padding: 0.5em;
+  margin: 4px 8px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.2em;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 1px 1px 1px #fff;
+  -webkit-border-radius: 0.5em;
+  outline: none;
+  text-shadow: 0 2px 1px #FFF;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d6d6d6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
+  background-image: linear-gradient(top, #ffffff, #d6d6d6);
+  filter: progid:dximagetransform.microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#d6d6d6');
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+input[type=submit]:hover {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  border: 3px solid rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 2px #FFF;
+}
+input[type=submit]:active {
+  opacity: 0.9;
+  border: 1px solid black;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(#929292), to(#ffffff));
+  background-image: -webkit-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -moz-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -o-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: -ms-radial-gradient(50% 50%, #ffffff, #929292);
+  background-image: radial-gradient(50% 50%, #ffffff, #929292);
+}

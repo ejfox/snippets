@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" media="all" href=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+	
+	<!-- LESS framework stylesheet 
+	Should be compiled from style.less
+	I use http://wearekiss.com/simpless for auto-compiling on save
+	-->	
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Primary Stylesheet" charset="utf-8">
+			
+	<!-- Bring in jQuery first, lots of other stuff depends on it -->
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>	
+
+    <!-- Add Retina.js for retina support -->
+    <script src="js/retina.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- And underscore | http://documentcloud.github.com/underscore/	
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	-->
+
+	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference 	
+	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script> -->
+	
+	<!-- And Lettering.js | https://github.com/davatron5000/Lettering.js 		
+	<script src="js/jquery.lettering.js" type="text/javascript" charset="utf-8"></script> -->
+	
+	<!-- And Scrollorama | http://johnpolacek.github.com/scrollorama/ 			
+	<script src="js/jquery.scrollorama.js" type="text/javascript" charset="utf-8"></script> -->
+	
+	<!-- And Tabletop | https://github.com/jsoma/tabletop 				
+	<script src="js/tabletop.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<script src="js/ich.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+    
+<script id="snippet" type="text/html">
+    <div class="snippet">
+        <div class="example">
+           <svg width="100%" height="300" style="background-color: grey;" id="example-{{id}}">
+           
+           </svg>
+        </div>
+        
+        <div class="description">
+           <h4>{{name}}</h4>
+            
+            <pre class="code" id="code-{{id}}">
+                {{code}}
+            </pre>
+            
+            <p class="description-text">
+                {{description}}
+            </p>
+        </div>
+    </div>
+</script>
+<div id="container">
+	<div id="title">
+		<h1>Snippet Library</h1>
+	</div>
+	
+	<div id="content" class="section">
+
+	    <div class="snippet">
+            <div class="example">
+               <img width="100%" height="300" style="background-color: grey;">
+            </div>
+            
+	        <div class="description">
+	           <h4>This thing does this blah blah</h4>
+	            
+	            <pre class="code">
+                    x = d3.time.scale()
+                        .domain([new Date(data[data.length - 1].date), new Date(data[0].date)])
+                        .rangeRound([0, width]);
+                </pre>
+                
+                <p class="description-text">
+ 	               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+ 	            </p>
+	        </div>
+	    </div>	
+	    
+	</div>
+	
+</div>
+<script type="text/javascript" charset="utf-8">	
+$(document).ready(function(){
+    
+    
+    for (var i=0; i < 10; i++) {
+        
+        snippet_data = {
+            id: i,
+            name: "Test number "+i,
+            code: "d3.select blah blah",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore <a href='#'>magna aliqua</a>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+        var snippet = ich.snippet(snippet_data);
+        $("#content").append($(snippet));
+        
+    };
+
+/*
+
+function init() {
+  Tabletop.init( { key: '0AmYzu_s7QHsmdDNZUzRlYldnWTZCLXdrMXlYQzVxSFE',
+                   callback: function(data, tabletop) { 
+						console.log(data) 
+					},
+                   simpleSheet: true 
+				} )
+}
+
+init();
+
+*/
+
+// Split h1 into words 
+// for more specific styling
+// $("#title h1").lettering('words');	
+
+// Initialize scrollorama for all elements with
+// the class of "section"
+/*
+var scrollorama = $.scrollorama({
+	blocks: '.section',
+	enablePin: false
+});
+
+scrollorama.onBlockChange(function(){
+		var i=scrollorama.blockIndex;
+		console.log(i);
+});
+*/
+});	
+</script>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+</body>
+</html>
