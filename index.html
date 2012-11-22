@@ -23,11 +23,11 @@
 	<!-- Bring in jQuery first, lots of other stuff depends on it -->
 	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>	
 
-    <!-- Add Retina.js for retina support -->
+    <!-- Add Retina.js for retina support 
     <script src="js/retina.js" type="text/javascript" charset="utf-8"></script>
-
-	<script src="js/ich.js" type="text/javascript" charset="utf-8"></script>
-	
+    -->
+    
+	<script src="js/ich.js" type="text/javascript" charset="utf-8"></script>	
 	
 	<!-- Tributary stuff -->
 	
@@ -67,16 +67,19 @@
     <!-- Tributary -->
     <script src="tributary/lib/inlet.js"></script>
     <script src="tributary/tributary.js?v=0.55"></script>
+    
+    
+	<script src="github/lib/base64.js" type="text/javascript" charset="utf-8"></script>
+    <script src="github/github.js" type="text/javascript" charset="utf-8"></script>
+    
+    
 	
 </head>
 <body>
     
 <script id="snippet" type="text/html">
-    <div class="snippet">
+    <div class="snippet" id="snippet-{{i}}">
         <div class="example">
-           <svg width="100%" height="300" style="background-color: grey;" id="example-{{id}}">
-           
-           </svg>
         </div>
         
         <div class="description">
@@ -98,104 +101,19 @@
 	</div>
 	
 	<div id="content" class="section">
-
-	    <div class="snippet" id="snippet-1">
-            <div class="example">
-
-            </div>
+        <div id="snippets">
             
-	        <div class="description">
-	           <h4>This thing does this blah blah</h4>
-	            <div class="editor">
-	               
-	            </div>
-	            <pre class="code">                    
-var svg = tributary.g; //d3.select("svg");
-
-svg.append("text")
-  .text("SVG!")
-  .attr({
-    x: 10,
-    y: 200,
-  });
-
-svg.append("circle")
-  .attr({
-    cx: 113,
-    cy: 100,
-    r: 100,
-    fill: "#0000ff"
-  })
-
-svg.append("rect")
-  .attr({
-    x: 263,
-    y: 65,
-    width: 100,
-    height: 100,
-    fill: "#ff0000"
-  });
-                </pre>
-                
-                <p class="description-text">
- 	               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
- 	            </p>
-	        </div>
-	    </div>	
-	    
-	    <!-- NEXT SNIPPET PLEASE -->
-	    
-	    <div class="snippet" id="snippet-2">
-            <div class="example">
-
-            </div>
-
-	        <div class="description">
-	           <h4>This thing does this blah blah</h4>
-	            <div class="editor">
-
-	            </div>
-	            <pre class="code">                    
-var svg = tributary.g; //d3.select("svg");
-
-svg.append("text")
-  .text("SVG!")
-  .attr({
-    x: 10,
-    y: 200,
-  });
-
-svg.append("circle")
-  .attr({
-    cx: 113,
-    cy: 100,
-    r: 100,
-    fill: "pink"
-  })
-
-svg.append("rect")
-  .attr({
-    x: 263,
-    y: 65,
-    width: 100,
-    height: 100,
-    fill: "purple"
-  });
-                </pre>
-
-                <p class="description-text">
- 	               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
- 	            </p>
-	        </div>
-	    </div>	
-	    
-	    
-	</div>
+        </div>
+    </div>
 	
 </div>
 <script type="text/javascript" charset="utf-8">	
 
 function makeTribSnippet(element){
+    
+    console.log("Snippet time!");
+    
+    
     if(element == undefined) {
         var element = "#snippet-1";
     }
@@ -205,46 +123,71 @@ function makeTribSnippet(element){
     var editor_div = d3.select(element+' .editor');
     $(element+' .code').hide();
 
+    var tb = Tributary();
+    var render = "svg";
+    var config = new tb.Config({display: render});
+    var model = new tb.CodeModel({code: codefile});
 
-      var tb = Tributary();
+    var tribcont = new tb.TributaryContext({
+    config: config,
+    model: model,
+    el: display_div.node()
+    })
+    tribcont.render();
+    tribcont.execute();
 
-      var render = "svg";
-      var config = new tb.Config({display: render});
-
-      var model = new tb.CodeModel({code: codefile});
-
-      var tribcont = new tb.TributaryContext({
-        config: config,
-        model: model,
-        el: display_div.node()
-      })
-      tribcont.render();
-      tribcont.execute();
-
-      var editor = new tb.Editor({
-        model: model,
-        el: editor_div.node()
-      });
-      editor.render();
+    var editor = new tb.Editor({
+    model: model,
+    el: editor_div.node()
+    });
+    editor.render();
 }
 
-$(document).ready(function(){
+function makeSnippets(snippet_array) {    
+
+var github = new Github({
+  username: "GITHUB_USER",
+  password: "GITHUB_PASSWORD",
+  auth: "basic"
+});
+
+_.each(snippet_array, function(snippet, i){
     
-    makeTribSnippet("#snippet-1");
-    makeTribSnippet("#snippet-2");
+    var gist = github.getGist(snippet);
     
-    for (var i=0; i < 10; i++) {
+    gist.read(function(err, gist) {
+        //console.log("Err: ",err," Gist: ",gist);
         
-        snippet_data = {
-            id: i,
-            name: "Test number "+i,
-            code: "d3.select blah blah",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore <a href='#'>magna aliqua</a>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        var snippet = gist.files['snippet.js'].content;
+        var readme = gist.files['README'].content;
+        
+        var readme_firstline = readme.split('\n')[0];        
+        //readme = readme.split('\n').splice(0,1).join('\n');
+        
+        var snippet_data = {
+            i: i,
+            name: readme_firstline,
+            code: snippet,
+            description: readme
         }
-        var snippet = ich.snippet(snippet_data);
-        //$("#content").append($(snippet));
         
-    };
+        var snippetHTML = ich.snippet(snippet_data);
+        
+        $('#snippets').append(snippetHTML);
+        
+        makeTribSnippet("#snippet-"+i)
+        
+        console.log(readme, snippet)
+    });
+    
+})
+}
+
+$(document).ready(function(){    
+
+    makeSnippets(['4127736']);
+    
+
 
 /*
 
@@ -259,24 +202,6 @@ function init() {
 
 init();
 
-*/
-
-// Split h1 into words 
-// for more specific styling
-// $("#title h1").lettering('words');	
-
-// Initialize scrollorama for all elements with
-// the class of "section"
-/*
-var scrollorama = $.scrollorama({
-	blocks: '.section',
-	enablePin: false
-});
-
-scrollorama.onBlockChange(function(){
-		var i=scrollorama.blockIndex;
-		console.log(i);
-});
 */
 });	
 </script>
