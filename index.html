@@ -79,22 +79,31 @@
     
 <script id="snippet" type="text/html">
     <div class="snippet" id="snippet-{{i}}">
-        <div class="example">
-        </div>
+
         
         <div class="description">
-           <h4>{{name}}</h4>
+           <h4><a href="{{gist_url}}">{{name}}</a></h4>
             
             <pre class="code" id="code-{{id}}">
                 {{code}}
             </pre>
+            <div class="editor">
+                
+            </div>
             
             <p class="description-text">
                 {{description}}
             </p>
         </div>
+        
+        <div class="example">
+        </div>
     </div>
 </script>
+
+
+
+
 <div id="container">
 	<div id="title">
 		<h1>Snippet Library</h1>
@@ -146,8 +155,8 @@ function makeTribSnippet(element){
 function makeSnippets(snippet_array) {    
 
 var github = new Github({
-  username: "GITHUB_USER",
-  password: "GITHUB_PASSWORD",
+  username: "USER",
+  password: "PASS",
   auth: "basic"
 });
 
@@ -156,7 +165,7 @@ _.each(snippet_array, function(snippet, i){
     var gist = github.getGist(snippet);
     
     gist.read(function(err, gist) {
-        //console.log("Err: ",err," Gist: ",gist);
+        console.log("Err: ",err," Gist: ",gist);
         
         var snippet = gist.files['snippet.js'].content;
         var readme = gist.files['README'].content;
@@ -166,6 +175,7 @@ _.each(snippet_array, function(snippet, i){
         
         var snippet_data = {
             i: i,
+            gist_url: gist.html_url,
             name: readme_firstline,
             code: snippet,
             description: readme
@@ -204,6 +214,10 @@ init();
 
 */
 });	
+
+
 </script>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

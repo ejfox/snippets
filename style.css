@@ -324,16 +324,19 @@ a:visited {
 .example,
 .description {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   border-radius: 4px;
 }
 .example {
+  min-width: 400px;
   width: 48%;
   max-width: 400px;
   text-align: center;
+  height: 300px;
+  background-color: white;
+  padding: 8px;
 }
 .description {
-  background-color: rgba(240, 240, 240, 0.4);
   padding: 4px 0.8em;
   width: 48%;
 }
@@ -348,6 +351,37 @@ pre.code {
   -moz-box-shadow: 0 1px 14px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 14px rgba(0, 0, 0, 0.1);
 }
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+@media only screen and (min-width: 768px) and (max-width: 1150px) {
+  body {
+    width: 100%;
+    max-width: 712px;
+    width: 80%;
+    padding: 32px 28px 60px;
+    font-size: 1.1em;
+  }
+  .example,
+  .description {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .example {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+  }
+}
 /*		Mobile Layout: 320px.
 		Gutters: 24px.
 		Outer margins: 34px.
@@ -357,11 +391,20 @@ cols    1     2      3
 px      68    160    252    */
 @media only screen and (max-width: 767px) {
   body {
-    min-width: 252px;
     width: 100%;
-    padding: 8px 8px 16px;
     font-size: 1em;
     line-height: 1.5em;
+    overflow-x: hidden;
+  }
+  .example,
+  .description {
+    width: 100%;
+  }
+  .example {
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    border: 1px solid black;
   }
 }
 /*		Wide Mobile Layout: 480px.
@@ -373,8 +416,7 @@ cols    1     2      3      4      5
 px      68    160    252    344    436    */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   body {
-    width: 436px;
-    padding: 8px 8px 16px;
+    width: 100%;
   }
 }
 /* 
