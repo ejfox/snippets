@@ -152,6 +152,13 @@ function makeTribSnippet(element){
     editor.render();
 }
 
+function getGithubToken() {
+    var clientID = "d953facc306039cbcf88";
+    var clientSecret = "57314b0d89bcca72822c3ee288e7b1a90c72eea2";
+    
+    // Do some fancy oAuth shit here, I dont understand it
+}
+
 function makeSnippets(snippet_array) {    
 
 var github = new Github({
@@ -159,6 +166,13 @@ var github = new Github({
   password: "PASS",
   auth: "basic"
 });
+
+/*
+var github = new Github({
+  token: getGithubToken(),
+  auth: "oauth"
+});
+*/
 
 _.each(snippet_array, function(snippet, i){
     
