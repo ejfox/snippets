@@ -342,8 +342,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 
 body {
     font-size: 1em;
-//	max-width: 896px;
-    width: 75%;
+    width: 896px;
 	padding: 32px 48px 84px;
 	background: @bgcolor;
 	color: @fontcolor;
@@ -370,9 +369,43 @@ a {
     margin: 12px 0;
 }
 
+.snippet {
+    padding: 12px 8px;
+    margin-bottom: 48px;
+    
+    border-radius: 6px;
+    
+    border-top: 1px solid rgba(250,250,250,0.8);
+    border-bottom: 1px solid rgba(10,10,10,0.2);
+    
+    .drop-shadow(0, 2px, 8px, 0.18);
+    
+    
+    background-color: #d8d7d9;
+    background-image: -webkit-gradient(radial, 50% 50%,0,50% 50%,200, from(rgb(247, 247, 247)), to(rgb(216, 215, 217)));
+    background-image: -webkit-radial-gradient(50% 50%, rgb(216, 215, 217), rgb(247, 247, 247));
+    background-image: -moz-radial-gradient(50% 50%, rgb(216, 215, 217), rgb(247, 247, 247));
+    background-image: -o-radial-gradient(50% 50%, rgb(216, 215, 217), rgb(247, 247, 247));
+    background-image: -ms-radial-gradient(50% 50%, rgb(216, 215, 217), rgb(247, 247, 247));
+    background-image: radial-gradient(50% 50%, rgb(216, 215, 217), rgb(247, 247, 247));
+    
+    h4 {
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+        line-height: 1.2em;
+        padding: 8px 12px;
+        
+        a:link {
+            text-decoration: none;
+        }
+    }
+
+}
+
 .example, .description {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     border-radius: 4px;
 }
 
@@ -382,7 +415,7 @@ a {
     max-width: 400px;
     text-align: center;
     height: 300px;
-    background-color: white;
+    //background-color: white;
     padding: 8px;
 }
 .description {
@@ -457,6 +490,7 @@ px      68    160    252    */
 	
 	body {
         width: 100%;
+        min-width: 400px;
 		font-size: 1em;
 		line-height: 1.5em;
 		overflow-x: hidden;
@@ -467,11 +501,13 @@ px      68    160    252    */
 	}
 	
 	.example {
-	    position: absolute;
-	    left: 50%;
-	    margin-left: -200px;
+	    //position: absolute;
+	    //left: 50%;
+	    //margin-left: -200px;
+	    margin: 0 auto;
+	    display: block;
 	    
-	    border: 1px solid black;
+	    //border: 1px solid black;
 	}
 }
 

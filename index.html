@@ -79,10 +79,12 @@
     
 <script id="snippet" type="text/html">
     <div class="snippet" id="snippet-{{i}}">
-
+        <h4><a href="{{gist_url}}">{{name}}</a></h4>            
+        
+        <div class="example">
+        </div>
         
         <div class="description">
-           <h4><a href="{{gist_url}}">{{name}}</a></h4>
             
             <pre class="code" id="code-{{id}}">
                 {{code}}
@@ -90,13 +92,9 @@
             <div class="editor">
                 
             </div>
-            
             <p class="description-text">
                 {{description}}
             </p>
-        </div>
-        
-        <div class="example">
         </div>
     </div>
 </script>
@@ -120,7 +118,7 @@
 
 function makeTribSnippet(element){
     
-    console.log("Snippet time!");
+    //console.log("Snippet time!");
     
     
     if(element == undefined) {
@@ -179,7 +177,7 @@ _.each(snippet_array, function(snippet, i){
     var gist = github.getGist(snippet);
     
     gist.read(function(err, gist) {
-        console.log("Err: ",err," Gist: ",gist);
+        //console.log("Err: ",err," Gist: ",gist);
         
         var snippet = gist.files['snippet.js'].content;
         var readme = gist.files['README'].content;
@@ -209,7 +207,7 @@ _.each(snippet_array, function(snippet, i){
 
 $(document).ready(function(){    
 
-    makeSnippets(['4127736']);
+    makeSnippets(['4127736', '4136856']);
     
 
 
