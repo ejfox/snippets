@@ -255,7 +255,7 @@ small {
 p {
   margin: 0.6em 0;
 }
-/*	Column class / mixins 
+/*	Column class / mixins
 	---------------------	*/
 .1-column {
   width: 68px;
@@ -287,7 +287,7 @@ p {
 .10-column {
   width: 896px;
 }
-/*		Default Layout: 992px. 
+/*		Default Layout: 992px.
 		Gutters: 24px.
 		Outer margins: 48px.
 		Leftover space for scrollbars @1024px: 32px.
@@ -305,12 +305,12 @@ body {
 
   margin-left: auto;
   margin-right: auto;
-  background-image: url('bg3.png');
+  background-image: url('img/bg3.png');
 }
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   body {
-    background-image: url('bg3@2x.png');
-    background-size: auto auto;
+    background-image: url('img/bg3@2x.png');
+    background-size: 400px 400px;
   }
 }
 a:link {
@@ -379,6 +379,12 @@ h1 {
   padding: 4px 0.8em;
   width: 48%;
   margin-left: 3px;
+}
+.description-text {
+  display: iblock;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 pre.code {
   background-color: #F8F8F8;
@@ -458,9 +464,9 @@ px      68    160    252    344    436    */
     width: 100%;
   }
 }
-/* 
+/*
         Styling those forms / inputs
-        
+
 ------------------------------------------------------------ */
 label {
   color: black;
