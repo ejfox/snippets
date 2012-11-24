@@ -305,6 +305,13 @@ body {
 
   margin-left: auto;
   margin-right: auto;
+  background-image: url('bg3.png');
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  body {
+    background-image: url('bg3@2x.png');
+    background-size: auto auto;
+  }
 }
 a:link {
   color: #10206d;
@@ -318,6 +325,9 @@ a:hover {
 a:visited {
   color: #04081d;
 }
+h1 {
+  text-shadow: rgba(10, 10, 12, 0.2) 0 2px 3px;
+}
 .section {
   margin: 12px 0;
 }
@@ -327,16 +337,17 @@ a:visited {
   border-radius: 6px;
   border-top: 1px solid rgba(250, 250, 250, 0.8);
   border-bottom: 1px solid rgba(10, 10, 10, 0.2);
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.12);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.12);
-  background-color: #d8d7d9;
-  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(#f7f7f7), to(#d8d7d9));
-  background-image: -webkit-radial-gradient(50% 50%, #d8d7d9, #f7f7f7);
-  background-image: -moz-radial-gradient(50% 50%, #d8d7d9, #f7f7f7);
-  background-image: -o-radial-gradient(50% 50%, #d8d7d9, #f7f7f7);
-  background-image: -ms-radial-gradient(50% 50%, #d8d7d9, #f7f7f7);
-  background-image: radial-gradient(50% 50%, #d8d7d9, #f7f7f7);
+  -webkit-box-shadow: 0 3px 11px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 0 3px 11px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 3px 11px rgba(0, 0, 0, 0.32);
+  /*background-color: #d8d7d9;*/
+
+  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(rgba(247, 247, 247, 0.89)), to(rgba(216, 215, 217, 0.75)));
+  background-image: -webkit-radial-gradient(50% 50%, rgba(216, 215, 217, 0.75), rgba(247, 247, 247, 0.89));
+  background-image: -moz-radial-gradient(50% 50%, rgba(216, 215, 217, 0.75), rgba(247, 247, 247, 0.89));
+  background-image: -o-radial-gradient(50% 50%, rgba(216, 215, 217, 0.75), rgba(247, 247, 247, 0.89));
+  background-image: -ms-radial-gradient(50% 50%, rgba(216, 215, 217, 0.75), rgba(247, 247, 247, 0.89));
+  background-image: radial-gradient(50% 50%, rgba(216, 215, 217, 0.75), rgba(247, 247, 247, 0.89));
 }
 .snippet h4 {
   text-align: center;
