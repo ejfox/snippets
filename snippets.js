@@ -64,8 +64,11 @@ _.each(snippet_array, function(snippet, i){
         var snippet = gist.files['snippet.js'].content;
         var readme = gist.files['README'].content;
         
-        var readme_firstline = readme.split('\n')[0];        
-        //readme = readme.split('\n').splice(0,1).join('\n');
+        var readme_firstline = readme.split('\n')[0].substring(1);   
+             
+        readme = gist.files['README'].content.split('\n').splice(1,2).join('\n');
+        
+//        snippet = snippet.split("\n").slice(1).join("\n");
         
         var snippet_data = {
             i: i,
